@@ -1,0 +1,48 @@
+[user]
+	name = Meiyo Peng
+	email = meiyo@riseup.net
+
+[core]
+	autoCRLF = input
+	safeCRLF = warn
+	editor = emacsclient
+
+[commit]
+	gpgSign = false
+
+[push]
+	default = simple
+
+[pull]
+	ff = only
+
+[status]
+	submoduleSummary = true
+
+[color]
+	ui = auto
+
+[alias]
+	a = add
+	b = branch
+	c = commit
+	c1 = clone --depth 1
+	co = checkout
+	c-p = clone --config "http.proxy=socks5://localhost:1080"
+	l = log --color --graph
+	s = status
+	undo = reset --soft HEAD^
+
+[http]
+	# proxy = http://localhost:8118
+	# proxy = socks5://localhost:1080
+
+[sendemail]
+	confirm = auto
+	bcc = meiyo@riseup.net
+
+    # local email relay
+	smtpServer = localhost
+
+[gc]
+	auto = 100
