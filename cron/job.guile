@@ -1,0 +1,25 @@
+;; -*- mode: scheme -*-
+;;
+;; mcron config
+;; https://www.gnu.org/software/mcron/manual/mcron.html
+;;
+;; (use-modules (mcron job-specifier))
+;;
+;; Available functions:
+;; (job time-proc action #:optional name #:key user)
+;; (current-time)
+;; (range start end #:optional step)
+;; (next-second #:optional second-list)
+;; (next-second-from current-time #:optional second-list)
+;;
+;; Example:
+;; (next-hour (range 0 24 6))  ; On 0, 6, 12 and 18 o'clock
+;;
+
+(job '(next-minute (range 0 60 30))
+     "offlineimap -u quiet"
+     "offlineimap")
+
+(job '(next-minute (range 0 60 10))
+     "change-wallpaper"
+     "change-wallpaper")
