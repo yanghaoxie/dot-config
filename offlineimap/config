@@ -1,0 +1,59 @@
+[general]
+pythonfile = ~/.config/offlineimap/config.py
+metadata = ~/Mail/.offlineimap
+accounts = riseup
+
+
+[Account gmail]
+localrepository = gmail-local
+remoterepository = gmail-remote
+postsynchook = ~/.config/offlineimap/post-sync.sh
+proxy = SOCKS5:localhost:1080
+
+[Repository gmail-local]
+type = GmailMaildir
+localfolders = ~/Mail/Gmail
+filename_use_mail_timestamp = yes
+
+[Repository gmail-remote]
+type = Gmail
+remotehost = imap.gmail.com
+remoteuser = meiyo.peng@gmail.com
+remotepasseval = emacs_get_secret("imap.gmail.com", "meiyo.peng@gmail.com")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+sync_deletes = yes
+folderfilter = lambda foldername: foldername in [
+    "INBOX",
+    "[Gmail]/All Mail",
+    "[Gmail]/Drafts",
+    "[Gmail]/Sent Mail",
+    "[Gmail]/Spam",
+    "[Gmail]/Trash",
+    ]
+
+
+[Account riseup]
+localrepository = riseup-local
+remoterepository = riseup-remote
+postsynchook = ~/.config/offlineimap/post-sync.sh
+
+[Repository riseup-local]
+type = Maildir
+localfolders = ~/Mail/Riseup
+filename_use_mail_timestamp = yes
+utime_from_header = yes
+
+[Repository riseup-remote]
+type = IMAP
+remotehost = mail.riseup.net
+remoteuser = meiyo@riseup.org
+remotepasseval = emacs_get_secret("mail.riseup.net", "meiyo@riseup.net")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+createfolders = false
+# One-way sync
+sync_deletes = no
+folderfilter = lambda foldername: foldername not in [
+    "Trash",
+    ]
