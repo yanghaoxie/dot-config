@@ -1,0 +1,13 @@
+# TMUX
+# To enable this feature, change this file's extention to ".fish".
+
+# Start tmux on login
+if status is-login; and status is-interactive; \
+    and test -z "$TMUX"; and command -sq tmux
+    # If no tmux session is started, start a new session
+    if tmux has-session
+        exec tmux attach
+    else
+        exec tmux new-session
+    end
+end
