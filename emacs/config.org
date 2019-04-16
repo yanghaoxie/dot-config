@@ -1398,6 +1398,13 @@
        :after (ob restclient))
    #+END_SRC
 
+** gettext
+   #+begin_src emacs-lisp
+     (use-package po-mode
+       :ensure nil
+       :mode ("\\.pot?\\'" . po-mode))
+   #+end_src
+
 * Internet
 ** Gnus
    #+BEGIN_SRC emacs-lisp
